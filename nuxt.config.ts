@@ -6,6 +6,9 @@ export default defineNuxtConfig({
   modules: ["@nuxt/ui", "@nuxtjs/supabase"],
   nitro: {
     preset: "cloudflare-pages",
+    prerender: {
+      autoSubfolderIndex: false,
+    },
   },
   runtimeConfig: {
     public: {
