@@ -4,6 +4,9 @@ export default defineNuxtConfig({
   pages: true,
   ssr: true,
   modules: ["@nuxt/ui", "@nuxtjs/supabase"],
+  nitro: {
+    preset: "cloudflare-pages",
+  },
   runtimeConfig: {
     public: {
       baseUrl: process.env.BASE_URL || "http://localhost:3000",
