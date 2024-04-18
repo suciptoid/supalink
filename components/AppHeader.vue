@@ -27,7 +27,7 @@ const logout = async () => {
         <UButton
           v-if="user"
           class="u-text-white"
-          variant="transparent"
+          variant="ghost"
           @click="logout"
         >
           Logout

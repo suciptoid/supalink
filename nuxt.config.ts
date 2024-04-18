@@ -16,10 +16,10 @@ export default defineNuxtConfig({
     },
   },
   supabase: {
+    redirect: false,
     redirectOptions: {
       login: "/auth/login",
       callback: "/auth/redirect",
-      include: ["/dashboard(/*)?"],
     },
   },
 });
