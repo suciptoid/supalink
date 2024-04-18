@@ -21,5 +21,10 @@ export default defineNuxtConfig({
       login: "/auth/login",
       callback: "/auth/redirect",
     },
+    clientOptions: {
+      auth: {
+        flowType: "pkce",
+      },
+    },
   },
 });
