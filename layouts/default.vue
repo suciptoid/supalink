@@ -1,9 +1,19 @@
 <script setup lang="ts">
 const route = useRoute();
+const config = useRuntimeConfig();
 
 useHead({
-  title: `SupaLink - ${route.meta.title}`,
-  meta: [{ property: "og:title", content: `SupaLink - ${route.meta.title}` }],
+  title: `${config.public.appName}${
+    route.meta.title ? ` - ${route.meta.title}` : ""
+  }`,
+  meta: [
+    {
+      property: "og:title",
+      content: `${config.public.appName}${
+        route.meta.title ? ` - ${route.meta.title}` : ""
+      }`,
+    },
+  ],
 });
 </script>
 

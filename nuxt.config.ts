@@ -10,6 +10,11 @@ export default defineNuxtConfig({
   //     autoSubfolderIndex: false,
   //   },
   // },
+  runtimeConfig: {
+    public: {
+      appName: process.env.APP_NAME || "SupaLink",
+    },
+  },
   supabase: {
     redirect: false,
   },
