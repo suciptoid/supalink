@@ -4,22 +4,13 @@ export default defineNuxtConfig({
   pages: true,
   ssr: true,
   modules: ["@nuxt/ui", "@nuxtjs/supabase"],
-  nitro: {
-    preset: "cloudflare-pages",
-    prerender: {
-      autoSubfolderIndex: false,
-    },
-  },
-  runtimeConfig: {
-    public: {
-      baseUrl: process.env.BASE_URL || "http://localhost:3000",
-    },
-  },
+  // nitro: {
+  //   preset: "cloudflare-pages",
+  //   prerender: {
+  //     autoSubfolderIndex: false,
+  //   },
+  // },
   supabase: {
     redirect: false,
-    redirectOptions: {
-      login: "/auth/login",
-      callback: "/auth/redirect",
-    },
   },
 });
