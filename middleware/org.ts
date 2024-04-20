@@ -9,8 +9,6 @@ export default defineNuxtRouteMiddleware(async (to) => {
     .select("id,name,org_users!inner(id,role)")
     .eq("org_users.user_id", user.value!.id);
 
-  console.log("to url", to);
-
   if (orgs.data?.length === 0) {
     return navigateTo("/org/create");
   }

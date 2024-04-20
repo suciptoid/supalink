@@ -23,23 +23,13 @@ const links = [
   <aside
     class="flex flex-col w-[250px] max-h-screen border-r dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800"
   >
-    <div class="text-lg font-bold py-3 px-4 border-b">Supalink</div>
+    <div class="text-lg font-bold py-3 px-4 border-b dark:border-gray-700">
+      Supalink
+    </div>
     <nav class="flex-1 overflow-x-auto px-3 py-2">
       <UVerticalNavigation :links="links" />
-
-      <!-- <UVerticalNavigation :links="links" />
-      <UVerticalNavigation :links="links" />
-      <UVerticalNavigation :links="links" />
-      <UVerticalNavigation :links="links" />
-      <UVerticalNavigation :links="links" />
-      <UVerticalNavigation :links="links" />
-      <UVerticalNavigation :links="links" />
-      <UVerticalNavigation :links="links" />
-      <UVerticalNavigation :links="links" />
-      <UVerticalNavigation :links="links" />
-      <UVerticalNavigation :links="links" /> -->
     </nav>
-    <div class="border-t px-4 py-1">
+    <div class="border-t px-4 py-1 dark:border-gray-700">
       <SideProfile />
     </div>
   </aside>

@@ -11,9 +11,12 @@ CREATE TABLE links (
     id uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
     org_id uuid NOT NULL,
     slug varchar(255) NOT NULL,
-    name varchar(255) NOT NULL,
     url text NOT NULL,
     clicks int NOT NULL DEFAULT 0,
     created_at timestamptz NOT NULL DEFAULT now(),
     updated_at timestamptz NOT NULL DEFAULT now()
 );
+
+-- create unique index on slug column
+ALTER TABLE links
+ADD CONSTRAINT links_slug_unique UNIQUE (slug);

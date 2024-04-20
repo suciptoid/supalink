@@ -14,7 +14,6 @@ export type Database = {
           clicks: number
           created_at: string
           id: string
-          name: string
           org_id: string
           slug: string
           updated_at: string
@@ -24,7 +23,6 @@ export type Database = {
           clicks?: number
           created_at?: string
           id?: string
-          name: string
           org_id: string
           slug: string
           updated_at?: string
@@ -34,7 +32,6 @@ export type Database = {
           clicks?: number
           created_at?: string
           id?: string
-          name?: string
           org_id?: string
           slug?: string
           updated_at?: string

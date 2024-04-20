@@ -9,17 +9,24 @@ definePageMeta({
 const user = useSupabaseUser();
 const db = useSupabaseClient<Database>();
 
-const orgs = await db
+const org = await db
   .from("orgs")
   .select("id,name,org_users!inner(id,role)")
-  .eq("org_users.user_id", user.value!.id);
+  .eq("org_users.user_id", user.value!.id)
+  .limit(1)
+  .single();
 
-console.log("orgs", orgs);
+if (org.data) {
+  navigateTo(`/org/${org.data.id}`);
+} else {
+  navigateTo("/org/create");
+}
 </script>
 
 <template>
   <div id="orgs" class="flex items-center justify-center min-h-screen flex-col">
-    Select an org
+    Redirecting...
+    <!-- Select an org
     <div class="w-full max-w-lg border rounded-md shadow-sm flex flex-col">
       <ULink
         v-for="org in orgs.data"
@@ -29,6 +36,6 @@ console.log("orgs", orgs);
       >
         {{ org.name }}
       </ULink>
-    </div>
+    </div> -->
   </div>
 </template>

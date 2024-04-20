@@ -10,6 +10,7 @@ useHead({
   <main class="flex h-screen inset-0 overflow-hidden">
     <AppSidebar />
     <div class="flex-1 flex flex-col">
+      <AppHeader />
       <slot />
     </div>
   </main>
