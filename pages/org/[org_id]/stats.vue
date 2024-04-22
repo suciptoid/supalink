@@ -44,7 +44,12 @@ console.log("data stats", stats.value);
                 Total clicks on all links on this org
               </div>
             </div>
-            <div class="text-5xl font-bold">{{ stats?.data?.total }}</div>
+            <div class="text-5xl font-bold">
+              <USkeleton v-if="pending" class="h-4 w-[200px]" />
+              <div v-else>
+                {{ stats?.data?.total ?? 0 }}
+              </div>
+            </div>
           </div>
         </UCard>
       </div>

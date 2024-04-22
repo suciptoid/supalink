@@ -1,3 +1,7 @@
+<script setup lang="ts">
+navigateTo("/org");
+</script>
+
 <template>
   <UContainer>
     <!-- <UCard class="mt-10">
