@@ -1,9 +1,6 @@
 <script setup lang="ts">
 const route = useRoute();
-const colorMode = useColorMode();
-
-const client = useSupabaseClient();
-const user = useSupabaseUser();
+const config = useRuntimeConfig();
 
 const links = [
   {
@@ -28,7 +25,7 @@ const links = [
     class="flex flex-col w-[250px] max-h-screen border-r dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800"
   >
     <div class="text-lg font-bold py-3 px-4 border-b dark:border-gray-700">
-      Supalink
+      {{ config.public.appName }}
     </div>
     <nav class="flex-1 overflow-x-auto px-3 py-2">
       <UVerticalNavigation size="lg" :links="links" />

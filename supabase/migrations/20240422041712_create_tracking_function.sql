@@ -3,6 +3,10 @@ CREATE OR REPLACE FUNCTION track_link(link_id uuid) RETURNS INT AS $$
 DECLARE
     updated_clicks INT;
 BEGIN
+    -- Update links counter
+    UPDATE links SET clicks = links.clicks + 1
+    WHERE links.id = track_link.link_id;
+
     -- Check if a record exists for the given link_id within the same hour
     IF NOT EXISTS (
         SELECT 1 FROM analytics AS a
@@ -21,8 +25,6 @@ BEGIN
         AND tracked_at = date_trunc('hour', now())
         RETURNING clicks INTO updated_clicks;
 
-        UPDATE links SET clicks = links.clicks + 1
-        WHERE links.id = track_link.link_id;
     END IF;
 
     RETURN updated_clicks;

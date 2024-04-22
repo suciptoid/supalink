@@ -12,18 +12,41 @@ const url = useRequestURL();
 const supabase = useSupabaseClient<Database>();
 const { copy } = useCopyToClipboard();
 
-const org = await supabase
-  .from("links")
-  .select()
-  .eq("org_id", route.params.org_id)
-  .order("updated_at", { ascending: false });
+const { pending, data: links } = useAsyncData("links_list", async () => {
+  return supabase
+    .from("links")
+    .select()
+    .eq("org_id", route.params.org_id)
+    .order("updated_at", { ascending: false });
+});
 </script>
 
 <template>
-  <div id="app">
+  <div id="app" class="overflow-y-auto">
     <UContainer class="py-4">
-      <div id="link-lists" class="space-y-2">
-        <UCard v-for="link in org.data" :key="link.id">
+      <div id="link-placeholder" class="space-y-2" v-if="pending">
+        <UCard v-for="link in 5" :key="link">
+          <div class="flex items-center gap-2">
+            <USkeleton class="h-12 w-12" :ui="{ rounded: 'rounded-full' }" />
+
+            <div class="links flex-1">
+              <div class="flex items-center gap-2">
+                <USkeleton class="h-4 w-[200px]" />
+              </div>
+              <div
+                class="text-xs text-gray-600 dark:text-gray-300 truncate mt-2"
+              >
+                <USkeleton class="h-4 w-[250px]" />
+              </div>
+            </div>
+            <div class="link-stats">
+              <USkeleton class="h-8 w-8" />
+            </div>
+          </div>
+        </UCard>
+      </div>
+      <div v-else id="link-lists" class="space-y-2">
+        <UCard v-for="link in links?.data" :key="link.id">
           <div class="flex items-center gap-2">
             <UAvatar
               alt="Link Icon"

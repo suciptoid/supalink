@@ -9,6 +9,9 @@ const route = useRoute();
 const supabase = useSupabaseClient<Database>();
 const toast = useToast();
 
+const refresh = () => refreshNuxtData("links_list");
+const { copy } = useCopyToClipboard();
+
 const state = reactive({
   link: "",
   slug: "",
@@ -54,6 +57,14 @@ async function onSubmit(event: FormSubmitEvent<any>) {
       .single();
 
     if (link.error) {
+      if (link.error.code === "23505") {
+        toast.add({
+          id: "create_link_error",
+          title: "Error create link",
+          description: "Link already in use",
+        });
+        return;
+      }
       toast.add({
         id: "create_link_error",
         title: "Error create link",
@@ -61,13 +72,13 @@ async function onSubmit(event: FormSubmitEvent<any>) {
       });
       return;
     } else {
-      toast.add({
-        id: "create_link_success",
-        title: "Link created",
-        description: link.data!.slug,
+      copy(`${url.origin}/${link.data!.slug}`, {
+        title: "Link Created",
+        description: "Link created and copied to clipboard",
       });
 
-      navigateTo(`/org/${orgId}`);
+      refresh();
+
       isOpen.value = false;
     }
   } finally {
