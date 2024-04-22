@@ -2,7 +2,6 @@
 import type { Database } from "~/supabase/types";
 
 const route = useRoute();
-console.log("redirecting to", route.params.link);
 
 const supabase = useSupabaseClient<Database>();
 const link = await supabase
@@ -13,7 +12,8 @@ const link = await supabase
 
 if (link.data) {
   // Navigating to link
-  // TODO: update stats
+  const track = await supabase.rpc("track_link", { link_id: link.data.id });
+  console.log("tracked", track);
   await navigateTo(link.data.url, { external: true });
 } else {
   await navigateTo("/");

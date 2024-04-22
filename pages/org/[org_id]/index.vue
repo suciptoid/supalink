@@ -15,7 +15,8 @@ const { copy } = useCopyToClipboard();
 const org = await supabase
   .from("links")
   .select()
-  .eq("org_id", route.params.org_id);
+  .eq("org_id", route.params.org_id)
+  .order("updated_at", { ascending: false });
 </script>
 
 <template>
@@ -34,6 +35,7 @@ const org = await supabase
                 <ULink
                   :to="`/${link.slug}`"
                   noPrefetch
+                  external
                   target="_blank"
                   class="font-semibold text-blue-700 dark:text-gray-200 text-sm"
                 >
@@ -56,6 +58,16 @@ const org = await supabase
               >
                 {{ link.url }}
               </div>
+            </div>
+            <div class="link-stats">
+              <UButton
+                :to="`stats?link=${link.id}`"
+                variant="soft"
+                class="flex items-center gap-2"
+              >
+                {{ link.clicks }}
+                <UIcon name="i-heroicons-chart-bar" />
+              </UButton>
             </div>
           </div>
         </UCard>

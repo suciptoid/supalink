@@ -9,6 +9,38 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      analytics: {
+        Row: {
+          clicks: number
+          id: string
+          link_id: string
+          tracked_at: string
+          updated_at: string
+        }
+        Insert: {
+          clicks?: number
+          id?: string
+          link_id: string
+          tracked_at?: string
+          updated_at?: string
+        }
+        Update: {
+          clicks?: number
+          id?: string
+          link_id?: string
+          tracked_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "analytics_link_id_fkey"
+            columns: ["link_id"]
+            isOneToOne: false
+            referencedRelation: "links"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       links: {
         Row: {
           clicks: number
@@ -109,7 +141,12 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      track_link: {
+        Args: {
+          link_id: string
+        }
+        Returns: number
+      }
     }
     Enums: {
       user_role: "owner" | "admin" | "member"
