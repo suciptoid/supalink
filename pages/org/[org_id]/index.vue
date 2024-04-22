@@ -84,7 +84,7 @@ const { pending, data: links } = useAsyncData("links_list", async () => {
             </div>
             <div class="link-stats">
               <UButton
-                :to="`stats?link=${link.id}`"
+                :to="`/org/${route.params.org_id}/stats?link=${link.id}`"
                 variant="soft"
                 class="flex items-center gap-2"
               >
