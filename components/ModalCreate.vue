@@ -109,7 +109,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
           <UFormGroup label="Shortened URL" name="slug">
             <div class="flex">
               <div
-                class="rounded-md rounded-r-none bg-gray-100 border px-2 flex items-center"
+                class="rounded-md rounded-r-none bg-gray-100 dark:bg-gray-900 dark:border-gray-700 border px-2 flex items-center"
               >
                 {{ url.host }}
               </div>

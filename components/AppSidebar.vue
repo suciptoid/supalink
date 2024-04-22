@@ -10,11 +10,15 @@ const links = [
     label: "My Links",
     icon: "i-heroicons-link",
     to: `/org/${route.params.org_id}`,
+    labelClass: "py-2",
+    iconClass: "px-4",
   },
   {
     label: "Analytics",
     icon: "i-heroicons-chart-bar",
     to: `/org/${route.params.org_id}/stats`,
+    labelClass: "py-2",
+    iconClass: "px-4",
   },
 ];
 </script>
@@ -27,7 +31,7 @@ const links = [
       Supalink
     </div>
     <nav class="flex-1 overflow-x-auto px-3 py-2">
-      <UVerticalNavigation :links="links" />
+      <UVerticalNavigation size="lg" :links="links" />
     </nav>
     <div class="border-t px-4 py-1 dark:border-gray-700">
       <SideProfile />
