@@ -8,14 +8,14 @@ const links = [
     icon: "i-heroicons-link",
     to: `/org/${route.params.org_id}`,
     labelClass: "py-2",
-    iconClass: "w-6 h-6 px-4",
+    iconClass: "w-6 h-6",
   },
   {
     label: "Analytics",
     icon: "i-heroicons-chart-bar",
     to: `/org/${route.params.org_id}/stats`,
     labelClass: "py-2",
-    iconClass: "w-6 h-6 px-4",
+    iconClass: "w-6 h-6",
   },
 ];
 </script>
