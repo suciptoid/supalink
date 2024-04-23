@@ -4,7 +4,7 @@ import type { Database } from "~/supabase/types";
 definePageMeta({
   title: "Analytics",
   layout: "dashboard",
-  middleware: ["auth"],
+  // middleware: ["auth"],
 });
 
 const route = useRoute();

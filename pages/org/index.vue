@@ -3,7 +3,7 @@ import type { Database } from "~/supabase/types";
 
 definePageMeta({
   title: "Select Org",
-  middleware: ["auth", "org"],
+  middleware: ["org"],
 });
 
 const user = useSupabaseUser();

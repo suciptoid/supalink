@@ -8,7 +8,7 @@ const toast = useToast();
 
 definePageMeta({
   title: "Create Org",
-  middleware: ["auth"],
+  // middleware: ["auth"],
 });
 
 const state = reactive({
